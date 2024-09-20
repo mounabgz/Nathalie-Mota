@@ -1,0 +1,159 @@
+//Variables :
+$police: 'Space Mono';
+
+//Mixin : 
+@mixin display-flex{
+    display: flex;
+  }
+
+@mixin display-none{
+    display: none;
+  }
+
+// Styles 
+
+#menu-header{
+    @include display-flex;
+    flex-direction: row;
+    justify-content: end;   
+    margin-top: -1%;
+
+    &   a{
+        color: black;
+    }
+
+    #menu-item-18,
+    #menu-item-28,
+    #menu-item-17{
+    list-style-type: none;
+    font-family: $police;
+    padding: 20px;
+    margin-right: 4%;
+}
+}
+
+a{
+    text-decoration: none !important;
+}
+
+.custom-logo{
+    margin-bottom: -2%;
+}
+
+/*MENU BURGER*/
+#menu-header::before {
+    content: "menu";
+    font-family: "Material Symbols Outlined";
+    font-size: 30px;
+    cursor: pointer;
+    @include display-none;
+    margin-top: -2%;
+  }
+  
+  #menu-header.menu-open::before {
+    content: "close";
+  }
+  
+  .burger__menu a {
+    color: white;
+  }
+  
+  @media screen and (max-width: 768px) {
+    #menu-item-18,
+    #menu-item-28,
+    #menu-item-17,
+      .burger__menu {
+        @include display-none;
+    }
+    #menu-header::before {
+        @include display-flex;
+    }
+    .burger__menu {
+        @include display-none;
+      position: fixed;
+      height: 100vh;
+      width: 100%;
+      top: 5%;
+      left: 0;
+      background-color: #E00000;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: xx-large;
+      font-family: $police;
+      list-style: none;
+      padding: 20px;
+      line-height: 150px;
+
+      &-open {
+        @include display-flex;
+        animation: fade-down 2s;
+        right: 0;
+      }
+      
+      &-close {
+        @include display-flex;
+        animation: fade-up 2s;
+        right: 0;
+      }
+    }
+  }
+  
+  @keyframes fade-down {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+
+/* FOOTER */
+
+#menu-footer{
+    @include display-flex;
+    justify-content: center;  
+
+    & a{
+    color: black; 
+}
+
+    #menu-item-19,
+    #menu-item-20,
+    #menu-item-21{ 
+    list-style-type: none;
+    font-family: $police;
+    padding: 20px;
+}
+}
+
+@media (max-width: 768px){
+    #menu-footer{
+        @include display-flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/*MODALE DE CONTACT*/
+
+.bouton{
+    font-family: $police;
+    background-color: #D8D8D8;
+    border: 1px grey;
+    border-radius: 2px;
+    width: 24%;
+    padding: 1%;
+}
+
