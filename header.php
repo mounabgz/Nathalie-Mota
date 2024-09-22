@@ -32,9 +32,9 @@
         ) ); ?>
 
         <ul class= "burger__menu">
-            <li><a href="http://localhost:10028/sample-page/">ACCEUIL</a></li>
+            <li><a href="http://localhost:10028/">ACCEUIL</a></li>
             <li><a href="http://localhost:10028/a-propos/">À PROPOS</a></li>
-            <li><a href="http://localhost:10028/contact/">CONTACT</a></li>
+            <li><a class="contact" href="http://localhost:10028/contact/">CONTACT</a></li>
         </ul>   
     </nav>
 </header>

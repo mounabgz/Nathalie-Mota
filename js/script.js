@@ -23,6 +23,32 @@ burgerMenu.addEventListener('animationend', (event) => {
     }
 });
 
+//MODALE DE CONTACT en desktop
+
+document.querySelector('.menu-item-17').addEventListener("click", function() {
+    const contactModale = document.querySelector(".modale_contact");
+    contactModale.classList.toggle('modale_contact-close')
+    if (contactModale.classList.contains('modale_contact-close')){
+        contactModale.style.display = 'flex';
+    }else{
+        contactModale.style.display = 'none';
+    }
+});
+
+//MODALE DE CONTACT pour la version mobile
+document.querySelector('.burger__menu').addEventListener("click", function() {
+    const contactModale = document.querySelector(".modale_contact");
+    contactModale.classList.toggle('modale_contact-close')
+    if (contactModale.classList.contains('modale_contact-close')){
+        contactModale.style.display = 'flex';
+        burgerMenu.classList.add('burger__menu-close'); 
+    }else{
+        contactModale.style.display = 'none';
+    }
+});
+
+
+
 
 
 

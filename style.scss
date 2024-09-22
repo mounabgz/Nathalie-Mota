@@ -1,6 +1,7 @@
 //Variables :
-$police: 'Space Mono';
-
+$main-police: 'Space Mono';
+$secondary-police: 'Poppins';
+$light-grey: #E5E5E5;
 //Mixin : 
 @mixin display-flex{
     display: flex;
@@ -25,16 +26,16 @@ $police: 'Space Mono';
     #menu-item-18,
     #menu-item-28,
     #menu-item-17{
-    list-style-type: none;
-    font-family: $police;
+    font-family: $main-police;
     padding: 20px;
     margin-right: 4%;
 }
 }
 
-a{
+a, li{
+    list-style-type: none;
     text-decoration: none !important;
-}
+  }
 
 .custom-logo{
     margin-bottom: -2%;
@@ -57,6 +58,9 @@ a{
   .burger__menu a {
     color: white;
   }
+  ul.burger__menu{
+    @include display-none;
+  }
   
   @media screen and (max-width: 768px) {
     #menu-item-18,
@@ -73,14 +77,14 @@ a{
       position: fixed;
       height: 100vh;
       width: 100%;
-      top: 5%;
+      top: 3%;
       left: 0;
       background-color: #E00000;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       font-size: xx-large;
-      font-family: $police;
+      font-family: $main-police;;
       list-style: none;
       padding: 20px;
       line-height: 150px;
@@ -133,7 +137,7 @@ a{
     #menu-item-20,
     #menu-item-21{ 
     list-style-type: none;
-    font-family: $police;
+    font-family: $main-police;
     padding: 20px;
 }
 }
@@ -147,13 +151,56 @@ a{
 }
 
 /*MODALE DE CONTACT*/
+  .menu-item-17 a,
+  .contact {
+    pointer-events: none;
+    cursor: default;
+  }
+  
+  .modale_contact {
+    @include display-none;
+    align-items: center;
+    flex-direction: column;
+    font-family: $secondary-police;
+    margin-left: 25%;
+    width: 50%;
 
-.bouton{
-    font-family: $police;
-    background-color: #D8D8D8;
-    border: 1px grey;
-    border-radius: 2px;
-    width: 24%;
-    padding: 1%;
-}
+    &-header {
+        height: 10vh;
+      }
 
+      &-champ {
+        width: 49vh;
+        height: 5vh;
+        border-radius: 10px;
+        border: solid 2px $light-grey;
+      }
+
+      &-champ-message {
+        width: 49vh;
+        height: 20vh;
+        border-radius: 10px;
+        border: solid 2px $light-grey;
+      }
+
+    &-bouton {
+        font-family: $main-police;
+        background-color: #D8D8D8;
+        border: 1px $light-grey;
+        border-radius: 2px;
+        width: 50vh;
+        padding: 3%;
+      }
+
+      &-close {
+        @include display-none;
+      }
+
+      @media (max-width: 500px) {
+        &-champ,
+        &-champ-message,
+        &-bouton {
+          width: 40vh;
+        }
+      }
+  }

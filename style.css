@@ -10,13 +10,13 @@
 #menu-header #menu-item-18,
 #menu-header #menu-item-28,
 #menu-header #menu-item-17 {
-  list-style-type: none;
   font-family: "Space Mono";
   padding: 20px;
   margin-right: 4%;
 }
 
-a {
+a, li {
+  list-style-type: none;
   text-decoration: none !important;
 }
 
@@ -42,6 +42,10 @@ a {
   color: white;
 }
 
+ul.burger__menu {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   #menu-item-18,
   #menu-item-28,
@@ -57,7 +61,7 @@ a {
     position: fixed;
     height: 100vh;
     width: 100%;
-    top: 5%;
+    top: 3%;
     left: 0;
     background-color: #E00000;
     flex-direction: column;
@@ -123,13 +127,50 @@ a {
   }
 }
 /*MODALE DE CONTACT*/
-.bouton {
+.menu-item-17 a,
+.contact {
+  pointer-events: none;
+  cursor: default;
+}
+
+.modale_contact {
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Poppins";
+  margin-left: 25%;
+  width: 50%;
+}
+.modale_contact-header {
+  height: 10vh;
+}
+.modale_contact-champ {
+  width: 49vh;
+  height: 5vh;
+  border-radius: 10px;
+  border: solid 2px #E5E5E5;
+}
+.modale_contact-champ-message {
+  width: 49vh;
+  height: 20vh;
+  border-radius: 10px;
+  border: solid 2px #E5E5E5;
+}
+.modale_contact-bouton {
   font-family: "Space Mono";
   background-color: #D8D8D8;
-  border: 1px grey;
+  border: 1px #E5E5E5;
   border-radius: 2px;
-  width: 24%;
-  padding: 1%;
+  width: 50vh;
+  padding: 3%;
+}
+.modale_contact-close {
+  display: none;
+}
+@media (max-width: 500px) {
+  .modale_contact-champ, .modale_contact-champ-message, .modale_contact-bouton {
+    width: 40vh;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
