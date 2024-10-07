@@ -23,36 +23,51 @@ burgerMenu.addEventListener('animationend', (event) => {
     }
 });
 
+//CODE POUR FERMER LA MODALE
+document.querySelector('.modale_contact-overlay').addEventListener("click", function() {
+    const contactModaleClose = document.querySelector(".modale_contact-overlay");
+    if (contactModaleClose.classList.contains('modale_contact-close')){
+        contactModaleClose.style.display = 'none';
+    }
+});
+
 //MODALE DE CONTACT en desktop
 
 document.querySelector('.menu-item-17').addEventListener("click", function() {
-    const contactModale = document.querySelector(".modale_contact");
+    const contactModale = document.querySelector(".modale_contact-overlay");
     contactModale.classList.toggle('modale_contact-close')
     if (contactModale.classList.contains('modale_contact-close')){
         contactModale.style.display = 'flex';
-    }else{
-        contactModale.style.display = 'none';
     }
 });
 
 //MODALE DE CONTACT pour la version mobile
 document.querySelector('.burger__menu').addEventListener("click", function() {
-    const contactModale = document.querySelector(".modale_contact");
+    const contactModale = document.querySelector(".modale_contact-overlay");
     contactModale.classList.toggle('modale_contact-close')
     if (contactModale.classList.contains('modale_contact-close')){
         contactModale.style.display = 'flex';
         burgerMenu.classList.add('burger__menu-close'); 
-    }else{
-        contactModale.style.display = 'none';
     }
 });
 
+//SINGLE POST : LE BOUTON DE CONTCACT
+document.querySelector('.page_info-bouton').addEventListener("click", function() {
+    const contactModale = document.querySelector(".modale_contact-overlay");
+    contactModale.classList.toggle('modale_contact-close')
+    if (contactModale.classList.contains('modale_contact-close')){
+        contactModale.style.display = 'flex';
+    }
+});
 
+//SINGLE POST : ON RECUPERE LA REFERENCE DE CHAQUE POST QU'ON INJECTE DANS LA MODALE
+$(document).ready(function() {
+    $('.page_info-bouton').click(function() {  
+        let ref = $(this).data('reference');
+        $('input[type="text"]').val(ref); 
+    });
+});
 
-
-
-
-       
-    
+//SINGLE POST : NAVIGATION ENTRE LES PHOTOS
 
 

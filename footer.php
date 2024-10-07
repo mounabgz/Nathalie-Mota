@@ -1,4 +1,4 @@
-<?php get_template_part('template_part/modale-contact'); ?>
+<?php get_template_part('template_part/Modale_contact/modale-contact'); ?>
 <footer>
 	<?php wp_nav_menu( array(
 	'menu' => 'Footer',

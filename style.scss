@@ -2,6 +2,7 @@
 $main-police: 'Space Mono';
 $secondary-police: 'Poppins';
 $light-grey: #E5E5E5;
+
 //Mixin : 
 @mixin display-flex{
     display: flex;
@@ -10,6 +11,18 @@ $light-grey: #E5E5E5;
 @mixin display-none{
     display: none;
   }
+
+@mixin cursor-pointer{
+  cursor: pointer;
+  }
+
+@mixin position-absolute{
+  position: absolute;
+  }
+
+  @mixin position-relative{
+    position: relative;
+    }
 
 // Styles 
 
@@ -22,6 +35,13 @@ $light-grey: #E5E5E5;
     &   a{
         color: black;
     }
+
+    & a:hover,
+    .menu-item-17:hover {
+    color: black;
+    font-weight: 800;
+    @include cursor-pointer;
+}
 
     #menu-item-18,
     #menu-item-28,
@@ -46,7 +66,7 @@ a, li{
     content: "menu";
     font-family: "Material Symbols Outlined";
     font-size: 30px;
-    cursor: pointer;
+    @include cursor-pointer;
     @include display-none;
     margin-top: -2%;
   }
@@ -131,6 +151,11 @@ a, li{
 
     & a{
     color: black; 
+
+    &:hover {
+      color: black;
+      font-weight: 800;
+      }
 }
 
     #menu-item-19,
@@ -154,53 +179,256 @@ a, li{
   .menu-item-17 a,
   .contact {
     pointer-events: none;
-    cursor: default;
+    @include cursor-pointer;
   }
   
-  .modale_contact {
+  .modale_contact-overlay{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:#00000060;
+    z-index: 1;
+    top:0;
+    left:0;
     @include display-none;
+    justify-content: center;
     align-items: center;
-    flex-direction: column;
-    font-family: $secondary-police;
-    margin-left: 25%;
-    width: 50%;
+  }
+
+    .modale_contact {
+      @include display-flex;
+      flex-direction: column;
+      border: black 2px solid;
+      font-family: "Poppins";
+      width: 43%;
+      background-color: white;
+      z-index: 2;
+      justify-content: center;
+      align-items: center;
+
 
     &-header {
-        height: 10vh;
-      }
+      height: 10vh;
+    }
+    }
 
-      &-champ {
+    .modale_contact-champ {
         width: 49vh;
         height: 5vh;
         border-radius: 10px;
         border: solid 2px $light-grey;
       }
 
-      &-champ-message {
+      .modale_contact-champ-message {
         width: 49vh;
         height: 20vh;
         border-radius: 10px;
         border: solid 2px $light-grey;
       }
 
-    &-bouton {
+    .modale_contact-bouton {
         font-family: $main-police;
         background-color: #D8D8D8;
         border: 1px $light-grey;
         border-radius: 2px;
         width: 50vh;
         padding: 3%;
+        @include cursor-pointer;
+        transition: background-color 0.7s;
       }
 
-      &-close {
+      .modale_contact-close {
         @include display-none;
       }
 
       @media (max-width: 500px) {
-        &-champ,
-        &-champ-message,
-        &-bouton {
+        .modale_contact,
+        .modale_contact-champ, 
+        .modale_contact-champ-message, 
+        .modale_contact-bouton {
+          width: 30vh;
+        }
+      }
+      @media (max-width: 500px) {
+        .modale_contact,
+        .modale_contact-header {
           width: 40vh;
         }
       }
+
+//TRANSITIONS DE COULEUR SUR LES BOUTONS
+.page_info-bouton:hover,
+.modale_contact-bouton:hover{
+  background-color: black;
+  color: white;
+}
+/* PAGE DETAILS */
+
+.page_info{
+  @include display-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 25vh;
+  margin-right: 25vh;
+
+  &-détails{
+    font-family: 'Space Mono';
+    margin-top: 45vh;
+    }
+
+    h2{
+      font-style: italic;
+      font-size:xx-large;
+    }
+
+    &-image{
+      object-fit: cover;
+    }
+}
+
+.little-horizontale-line{
+  width: 43%; 
+  height: 1px; 
+  background-color: black;
+  margin-left: 12.5%;
+}
+
+.longue-horizontale-line{
+  width: 75%; 
+  height: 1px; 
+  background-color: black;
+}
+
+.page_info-contact{
+  @include display-flex;
+  font-family: 'Poppins';
+  margin-left: 25vh;
+  margin-right: 25vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.page_info-bouton{
+  font-family: "Space Mono";
+  background-color: #D8D8D8;
+  border: 1px #E5E5E5;
+  border-radius: 2px;
+  width: 30vh;
+  margin-left: 15%;
+  transition: background-color 0.7s;
+  @include cursor-pointer;
+}
+
+  @media (max-width: 768px) {
+    .page_info,
+    .page_info-contact {
+      flex-direction: column;
+    }
   }
+
+/*MINIATURE*/
+
+  .photo-container{
+    width: 10vh;
+    border: solid 1px #E5E5E5;
+    margin-left: 44vh;
+  }
+
+  .arrow-right{
+    @include position-absolute;
+    right: 30vh;
+    top: 111%;
+  }
+  
+  .arrow-left{
+    @include position-absolute;
+    right: 40vh;
+    top: 111%;
+  }
+
+/*PHOTOS APPARENTÉS*/
+
+.photos_apparentes{
+font-family: 'Space Mono';
+font-size: larger;
+margin-left: 25vh;
+margin-right: 25vh;
+margin-top: 5%;
+
+&-flex{
+  @include display-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  @include position-relative;
+}
+
+&-flex img{
+  @include cursor-pointer;
+  -webkit-filter: brightness(100%);
+  -webkit-transition: all 0.7s;
+}
+
+&-flex img:hover {
+  -webkit-filter: brightness(55%);
+}
+
+.fa-eye{
+  @include position-absolute;
+    top: 45%;
+    left: 50%;
+    font-size: 24px; 
+    opacity: 0;
+    color: white;
+    @include cursor-pointer;
+}
+&-images:hover .fa-eye {
+  opacity: 1;
+}
+
+.fa-expand{
+  @include position-absolute;
+    top: 1%;
+    right: -1%;
+    font-size: 20px; 
+    color: white;
+    opacity: 0;
+    @include cursor-pointer;
+}
+&-images:hover .fa-expand {
+  opacity: 1;
+}
+
+&-images{
+  width:45%;
+  @include position-relative;
+  display: inline-block; 
+}
+
+&-images img{
+  object-fit: cover;
+}
+
+&-text{
+  @include position-absolute;
+  color: white;
+  opacity: 0;
+  bottom: 5%;
+  left: 1%;
+  font-size: small;
+}
+&-images:hover &-text {
+  opacity: 1;
+}
+
+&-categorie{
+  @include position-absolute;
+  color: white;
+  opacity: 0;
+  bottom: 5%;
+  right: 1%;
+  font-size: small;
+}
+&-images:hover &-categorie {
+  opacity: 1;
+}
+}
