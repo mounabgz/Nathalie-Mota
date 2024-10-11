@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/*HEADER*/
 #menu-header {
   display: flex;
   flex-direction: row;
@@ -215,6 +216,7 @@ ul.burger__menu {
     width: 40vh;
   }
 }
+/*TRANSITIONS DE COULEUR SUR LES BOUTONS*/
 .page_info-bouton:hover,
 .modale_contact-bouton:hover {
   background-color: black;
@@ -228,10 +230,12 @@ ul.burger__menu {
   justify-content: space-between;
   margin-left: 25vh;
   margin-right: 25vh;
+  /*MEDIAS QUERIES POUR LA SECTIONS DES DÉTAILS ET LA PHOTO*/
 }
 .page_info-détails {
   font-family: "Space Mono";
   margin-top: 45vh;
+  margin-right: 15%;
 }
 .page_info h2 {
   font-style: italic;
@@ -240,7 +244,22 @@ ul.burger__menu {
 .page_info-image {
   object-fit: cover;
 }
+@media (max-width: 768px) {
+  .page_info-image {
+    order: -1;
+    object-fit: cover;
+    height: 80vh;
+    width: 60vh;
+    margin-left: -23vh;
+    margin-bottom: -40vh;
+  }
+  .page_info p, .page_info h2 {
+    white-space: nowrap;
+    margin-left: -20vh;
+  }
+}
 
+/* PAGE DETAILS : LIGNES HORIZONTALES SÉPARATRICES */
 .little-horizontale-line {
   width: 43%;
   height: 1px;
@@ -254,6 +273,15 @@ ul.burger__menu {
   background-color: black;
 }
 
+@media (max-width: 768px) {
+  .longue-horizontale-line,
+  .little-horizontale-line {
+    width: 100%;
+  }
+  .little-horizontale-line {
+    margin-left: 0%;
+  }
+}
 .page_info-contact {
   display: flex;
   font-family: "Poppins";
@@ -274,38 +302,70 @@ ul.burger__menu {
   cursor: pointer;
 }
 
+/*MEDIAS QUERIES POUR LA ZONE DE CONTACTE DANS LA SINGLE POST*/
 @media (max-width: 768px) {
   .page_info,
   .page_info-contact {
     flex-direction: column;
   }
+  .page_info-bouton {
+    height: 7vh;
+  }
+  .page_info-bouton, .page_info-contact {
+    align-items: center;
+  }
+  .page_info-détails {
+    margin-left: 10%;
+  }
+  .page_info-contact p {
+    white-space: nowrap;
+  }
 }
-/*MINIATURE*/
+/*PAGE DETAILS : MINIATURE*/
 .photo-container {
-  width: 10vh;
-  border: solid 1px #E5E5E5;
   margin-left: 44vh;
+  margin-top: -2%;
 }
-
-.arrow-right {
+.photo-container img {
+  width: 10vh;
+  height: 10vh;
+}
+.photo-container .next_photo:hover {
+  transform: scale(1.5);
+  transition: 1s ease;
+}
+.photo-container .next_photo {
+  display: none;
+  transition: 1s ease;
+}
+.photo-container .previous_photo {
+  display: none;
+  transition: 1s ease;
+}
+@media (max-width: 768px) {
+  .photo-container .photo-container, .photo-container .arrow-right, .photo-container .arrow-left {
+    display: none;
+  }
+}
+.photo-container .arrow-right {
   position: absolute;
   right: 30vh;
   top: 111%;
 }
-
-.arrow-left {
+.photo-container .arrow-left {
   position: absolute;
   right: 40vh;
   top: 111%;
 }
 
-/*PHOTOS APPARENTÉS*/
+/*PAGE DETAILS : PHOTOS APPARENTÉS*/
 .photos_apparentes {
   font-family: "Space Mono";
   font-size: larger;
   margin-left: 25vh;
   margin-right: 25vh;
   margin-top: 5%;
+  /*MEDIA QUERIES POUR LES PHOTOS APPARENTÉS*/
 }
 .photos_apparentes-flex {
   display: flex;
@@ -317,6 +377,9 @@ ul.burger__menu {
   cursor: pointer;
   -webkit-filter: brightness(100%);
   -webkit-transition: all 0.7s;
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
 }
 .photos_apparentes-flex img:hover {
   -webkit-filter: brightness(55%);
@@ -350,9 +413,6 @@ ul.burger__menu {
   position: relative;
   display: inline-block;
 }
-.photos_apparentes-images img {
-  object-fit: cover;
-}
 .photos_apparentes-text {
   position: absolute;
   color: white;
@@ -374,6 +434,29 @@ ul.burger__menu {
 }
 .photos_apparentes-images:hover .photos_apparentes-categorie {
   opacity: 1;
+}
+@media (max-width: 768px) {
+  .photos_apparentes-flex {
+    flex-direction: column;
+    margin-left: -23vh;
+  }
+  .photos_apparentes p {
+    white-space: nowrap;
+  }
+  .photos_apparentes-flex img {
+    width: 450px;
+    height: 450px;
+  }
+  .photos_apparentes-categorie {
+    position: absolute;
+    margin-left: -25%;
+  }
+  .photos_apparentes .fa-eye {
+    margin-left: 20vh;
+  }
+  .photos_apparentes .fa-expand, .photos_apparentes-categorie {
+    margin-right: -40vh;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

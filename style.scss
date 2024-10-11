@@ -26,6 +26,7 @@ $light-grey: #E5E5E5;
 
 // Styles 
 
+/*HEADER*/
 #menu-header{
     @include display-flex;
     flex-direction: row;
@@ -199,7 +200,7 @@ a, li{
       @include display-flex;
       flex-direction: column;
       border: black 2px solid;
-      font-family: "Poppins";
+      font-family: $secondary-police;
       width: 43%;
       background-color: white;
       z-index: 2;
@@ -256,7 +257,7 @@ a, li{
         }
       }
 
-//TRANSITIONS DE COULEUR SUR LES BOUTONS
+/*TRANSITIONS DE COULEUR SUR LES BOUTONS*/
 .page_info-bouton:hover,
 .modale_contact-bouton:hover{
   background-color: black;
@@ -272,8 +273,9 @@ a, li{
   margin-right: 25vh;
 
   &-détails{
-    font-family: 'Space Mono';
+    font-family: $main-police;
     margin-top: 45vh;
+    margin-right: 15%;
     }
 
     h2{
@@ -284,8 +286,25 @@ a, li{
     &-image{
       object-fit: cover;
     }
+
+/*MEDIAS QUERIES POUR LA SECTIONS DES DÉTAILS ET LA PHOTO*/
+@media (max-width: 768px){
+  &-image{
+  order: -1;
+  object-fit: cover;
+  height: 80vh;
+  width: 60vh;
+  margin-left: -23vh;
+  margin-bottom: -40vh;
+  }
+  & p, h2{
+    white-space: nowrap;
+    margin-left: -20vh;
+  }
+}
 }
 
+/* PAGE DETAILS : LIGNES HORIZONTALES SÉPARATRICES */
 .little-horizontale-line{
   width: 43%; 
   height: 1px; 
@@ -299,9 +318,19 @@ a, li{
   background-color: black;
 }
 
+@media (max-width: 768px){
+  .longue-horizontale-line,
+  .little-horizontale-line{
+width: 100%;
+  }
+  .little-horizontale-line{
+  margin-left: 0%;
+}
+}
+
 .page_info-contact{
   @include display-flex;
-  font-family: 'Poppins';
+  font-family: $secondary-police;
   margin-left: 25vh;
   margin-right: 25vh;
   margin-top: 5vh;
@@ -309,31 +338,65 @@ a, li{
 }
 
 .page_info-bouton{
-  font-family: "Space Mono";
+  font-family: $main-police;
   background-color: #D8D8D8;
-  border: 1px #E5E5E5;
+  border: 1px $light-grey;
   border-radius: 2px;
   width: 30vh;
   margin-left: 15%;
   transition: background-color 0.7s;
   @include cursor-pointer;
 }
-
+/*MEDIAS QUERIES POUR LA ZONE DE CONTACTE DANS LA SINGLE POST*/
   @media (max-width: 768px) {
     .page_info,
     .page_info-contact {
       flex-direction: column;
     }
+    .page_info-bouton{
+    height: 7vh;
+    }
+    .page_info-bouton, .page_info-contact{
+    align-items: center;
+      }
+    .page_info-détails{
+        margin-left: 10%;
+    }
+    .page_info-contact p{
+        white-space: nowrap;
+    }
   }
 
-/*MINIATURE*/
+/*PAGE DETAILS : MINIATURE*/
 
   .photo-container{
-    width: 10vh;
-    border: solid 1px #E5E5E5;
     margin-left: 44vh;
-  }
+    margin-top: -2%;
 
+    & img{
+      width: 10vh;
+    height: 10vh;
+    }
+
+    .next_photo:hover{
+      transform: scale(1.5);
+      transition: 1s ease;
+    }
+
+    .next_photo{
+      @include display-none;
+      transition: 1s ease;
+    }
+
+    .previous_photo{
+      @include display-none;
+      transition: 1s ease;
+    }
+    @media (max-width: 768px){
+      .photo-container,   .arrow-right,   .arrow-left{
+        display: none
+    }
+  }
   .arrow-right{
     @include position-absolute;
     right: 30vh;
@@ -345,11 +408,12 @@ a, li{
     right: 40vh;
     top: 111%;
   }
+}
 
-/*PHOTOS APPARENTÉS*/
+/*PAGE DETAILS : PHOTOS APPARENTÉS*/
 
 .photos_apparentes{
-font-family: 'Space Mono';
+font-family: $main-police;
 font-size: larger;
 margin-left: 25vh;
 margin-right: 25vh;
@@ -366,6 +430,9 @@ margin-top: 5%;
   @include cursor-pointer;
   -webkit-filter: brightness(100%);
   -webkit-transition: all 0.7s;
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
 }
 
 &-flex img:hover {
@@ -404,10 +471,6 @@ margin-top: 5%;
   display: inline-block; 
 }
 
-&-images img{
-  object-fit: cover;
-}
-
 &-text{
   @include position-absolute;
   color: white;
@@ -430,5 +493,32 @@ margin-top: 5%;
 }
 &-images:hover &-categorie {
   opacity: 1;
+}
+
+/*MEDIA QUERIES POUR LES PHOTOS APPARENTÉS*/
+
+@media (max-width: 768px) {
+  &-flex {
+    flex-direction: column;
+    margin-left: -23vh;
+  }
+  & p{
+    white-space: nowrap;
+  }
+
+  &-flex img{
+    width: 450px;
+    height: 450px;
+  }
+  &-categorie{
+    @include position-absolute;
+    margin-left: -25%;
+  }
+  .fa-eye{
+    margin-left: 20vh;
+  }
+  .fa-expand, &-categorie{
+    margin-right: -40vh;
+  }
 }
 }

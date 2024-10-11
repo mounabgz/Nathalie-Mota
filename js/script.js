@@ -30,6 +30,10 @@ document.querySelector('.modale_contact-overlay').addEventListener("click", func
         contactModaleClose.style.display = 'none';
     }
 });
+// Pour empêcher la modale de se fermer lorsqu'on clique sur celle-ci
+document.querySelector('.modale_contact').addEventListener("click", function(event) {
+    event.stopPropagation(); 
+});
 
 //MODALE DE CONTACT en desktop
 
@@ -68,6 +72,30 @@ $(document).ready(function() {
     });
 });
 
-//SINGLE POST : NAVIGATION ENTRE LES PHOTOS
+//SINGLE POST : LA NAVIGATION ENTRE LES PHOTOS SUIVANTES
 
+document.querySelector('.arrow-right').addEventListener("mouseover", function() {
+    const nextPhoto = document.querySelector(".next_photo");
+    const arrowRight = document.querySelector(".arrow-right");
+    if (arrowRight.classList.contains('arrow-right')){
+        nextPhoto.style.display = 'flex';
+    }
+    arrowRight.addEventListener('mouseout', () => {
+        nextPhoto.style.display = 'none';
+    });
+});
+
+//SINGLE POST : LA NAVIGATION ENTRE LES PHOTOS PRECEDENTES
+
+document.querySelector('.arrow-left').addEventListener("mouseover", function() {
+    const prevPhoto = document.querySelector(".previous_photo");
+    const arrowLeft = document.querySelector(".arrow-left");
+    if (arrowLeft.classList.contains('arrow-left')){
+        prevPhoto.style.display = 'flex';
+    }
+    arrowLeft.addEventListener('mouseout', () => {
+        prevPhoto.style.display = 'none';
+    });
+
+});
 

@@ -42,7 +42,7 @@ $post_id = get_permalink();
     echo"</div>";
 endwhile;
 else :
-    echo 'Aucun article trouvé pour cette requête';
+    echo 'Aucun autre article trouvé pour cette catégorie';
 endif;
 
 // On réinitialise à la requête principale
