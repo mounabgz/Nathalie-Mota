@@ -1,5 +1,5 @@
 <?php
-
+//ENQUEUE LES STYLES ET SCRIPTS
 function nathalieMota_enqueue_styles() {
     wp_enqueue_style( 'nathalieMota-style', get_template_directory_uri() . '/style.css' ); 
     wp_enqueue_script( 'nathalieMota-scripts', get_template_directory_uri() . '/js/script.js', array(), null, true );

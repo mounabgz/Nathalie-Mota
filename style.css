@@ -459,4 +459,22 @@ ul.burger__menu {
   }
 }
 
+/*HERO HEADER*/
+.hero_header img {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.hero_header-title {
+  font-family: "Space Mono";
+  font-style: italic;
+  font-size: 90px;
+  color: transparent;
+  -webkit-text-stroke: 3px white;
+  position: absolute;
+  top: 30%;
+  right: 19%;
+}
+
 /*# sourceMappingURL=style.css.map */
