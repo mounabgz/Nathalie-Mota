@@ -259,7 +259,8 @@ a, li{
 
 /*TRANSITIONS DE COULEUR SUR LES BOUTONS*/
 .page_info-bouton:hover,
-.modale_contact-bouton:hover{
+.modale_contact-bouton:hover,
+.photo_list-button:hover{
   background-color: black;
   color: white;
 }
@@ -475,7 +476,7 @@ margin-top: 5%;
   @include position-absolute;
   color: white;
   opacity: 0;
-  bottom: 5%;
+  bottom: 1%;
   left: 1%;
   font-size: small;
 }
@@ -487,7 +488,7 @@ margin-top: 5%;
   @include position-absolute;
   color: white;
   opacity: 0;
-  bottom: 5%;
+  bottom: 1%;
   right: 1%;
   font-size: small;
 }
@@ -539,4 +540,100 @@ color: transparent;
 @include position-absolute;
 top: 30%;
 right: 19%;
+}
+
+//LISTE DES PHOTOS 
+.photo_list {
+  @include display-flex;
+  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
+  justify-content: space-around; /* Pour espacer les colonnes de manière égale */
+  font-family: $secondary-police;
+  margin-left: 20vh;
+  margin-right: 20vh;
+
+  &-image img {
+    width: 70vh;
+    height: 70vh;
+    object-fit: cover;
+    -webkit-filter: brightness(100%);
+    -webkit-transition: all 0.7s;
+    padding: 15px;
+  }
+  
+  &-image img:hover {
+    -webkit-filter: brightness(55%);
+  }
+  
+  &-image .fa-eye {
+    @include position-absolute;
+    top: 45%;
+    left: 48%;
+    font-size: 35px;
+    opacity: 0;
+    color: white;
+    @include cursor-pointer;
+  }
+  &-image:hover .fa-eye {
+    opacity: 1;
+  }
+  
+  &-image .fa-expand {
+    @include position-absolute;
+    top: 3%;
+    right: 4%;
+    font-size: 25px;
+    opacity: 0;
+    color: white;
+    @include cursor-pointer;
+  }
+  &-image:hover .fa-expand {
+    opacity: 1;
+  }
+  
+  &-image {
+    @include position-relative;
+    display: inline-block;
+  }
+  
+  &-text {
+    @include position-absolute;
+    color: white;
+    opacity: 0;
+    bottom: 3%;
+    left: 3%;
+    font-size: small;
+  }
+  &-image:hover &-text {
+    opacity: 1;
+  }
+  
+  &-categorie{
+    @include position-absolute;
+    color: white;
+    opacity: 0;
+    bottom: 3%;
+    right: 3%;
+    font-size: small;
+  }
+  
+  &-image:hover &-categorie {
+    opacity: 1;
+  }
+}
+
+.button-container {
+  @include display-flex;
+  justify-content: center;
+  margin-top: 3%;
+
+  .photo_list-button{
+    font-family: $main-police;
+    background-color: #D8D8D8;
+    border: 1px $light-grey;
+    border-radius: 2px;
+    width: 30vh;
+    padding: 1%;
+    @include cursor-pointer;
+    transition: background-color 0.7s;
+  }
 }

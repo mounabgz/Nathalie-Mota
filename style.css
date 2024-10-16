@@ -218,7 +218,8 @@ ul.burger__menu {
 }
 /*TRANSITIONS DE COULEUR SUR LES BOUTONS*/
 .page_info-bouton:hover,
-.modale_contact-bouton:hover {
+.modale_contact-bouton:hover,
+.photo_list-button:hover {
   background-color: black;
   color: white;
 }
@@ -417,7 +418,7 @@ ul.burger__menu {
   position: absolute;
   color: white;
   opacity: 0;
-  bottom: 5%;
+  bottom: 1%;
   left: 1%;
   font-size: small;
 }
@@ -428,7 +429,7 @@ ul.burger__menu {
   position: absolute;
   color: white;
   opacity: 0;
-  bottom: 5%;
+  bottom: 1%;
   right: 1%;
   font-size: small;
 }
@@ -475,6 +476,92 @@ ul.burger__menu {
   position: absolute;
   top: 30%;
   right: 19%;
+}
+
+.photo_list {
+  display: flex;
+  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
+  justify-content: space-around; /* Pour espacer les colonnes de manière égale */
+  font-family: "Poppins";
+  margin-left: 20vh;
+  margin-right: 20vh;
+}
+.photo_list-image img {
+  width: 70vh;
+  height: 70vh;
+  object-fit: cover;
+  -webkit-filter: brightness(100%);
+  -webkit-transition: all 0.7s;
+  padding: 15px;
+}
+.photo_list-image img:hover {
+  -webkit-filter: brightness(55%);
+}
+.photo_list-image .fa-eye {
+  position: absolute;
+  top: 45%;
+  left: 48%;
+  font-size: 35px;
+  opacity: 0;
+  color: white;
+  cursor: pointer;
+}
+.photo_list-image:hover .fa-eye {
+  opacity: 1;
+}
+.photo_list-image .fa-expand {
+  position: absolute;
+  top: 3%;
+  right: 4%;
+  font-size: 25px;
+  opacity: 0;
+  color: white;
+  cursor: pointer;
+}
+.photo_list-image:hover .fa-expand {
+  opacity: 1;
+}
+.photo_list-image {
+  position: relative;
+  display: inline-block;
+}
+.photo_list-text {
+  position: absolute;
+  color: white;
+  opacity: 0;
+  bottom: 3%;
+  left: 3%;
+  font-size: small;
+}
+.photo_list-image:hover .photo_list-text {
+  opacity: 1;
+}
+.photo_list-categorie {
+  position: absolute;
+  color: white;
+  opacity: 0;
+  bottom: 3%;
+  right: 3%;
+  font-size: small;
+}
+.photo_list-image:hover .photo_list-categorie {
+  opacity: 1;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+}
+.button-container .photo_list-button {
+  font-family: "Space Mono";
+  background-color: #D8D8D8;
+  border: 1px #E5E5E5;
+  border-radius: 2px;
+  width: 30vh;
+  padding: 1%;
+  cursor: pointer;
+  transition: background-color 0.7s;
 }
 
 /*# sourceMappingURL=style.css.map */
