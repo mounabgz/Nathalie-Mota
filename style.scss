@@ -476,8 +476,8 @@ margin-top: 5%;
   @include position-absolute;
   color: white;
   opacity: 0;
-  bottom: 1%;
-  left: 1%;
+  bottom: 30%;
+  left: 30%;
   font-size: small;
 }
 &-images:hover &-text {
@@ -545,11 +545,11 @@ right: 19%;
 //LISTE DES PHOTOS 
 .photo_list {
   @include display-flex;
-  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
-  justify-content: space-around; /* Pour espacer les colonnes de manière égale */
+  flex-wrap: wrap; 
+  justify-content: space-around;
   font-family: $secondary-police;
-  margin-left: 20vh;
-  margin-right: 20vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
 
   &-image img {
     width: 70vh;
@@ -625,15 +625,15 @@ right: 19%;
   @include display-flex;
   justify-content: center;
   margin-top: 3%;
+}
 
-  .photo_list-button{
-    font-family: $main-police;
-    background-color: #D8D8D8;
-    border: 1px $light-grey;
-    border-radius: 2px;
-    width: 30vh;
-    padding: 1%;
-    @include cursor-pointer;
-    transition: background-color 0.7s;
-  }
+.photo_list-button{
+  font-family: $main-police;
+  background-color: #D8D8D8;
+  border: 1px $light-grey;
+  border-radius: 2px;
+  width: 30vh;
+  padding: 1%;
+  @include cursor-pointer;
+  transition: background-color 0.7s;
 }

@@ -98,4 +98,3 @@ document.querySelector('.arrow-left').addEventListener("mouseover", function() {
     });
 
 });
-
