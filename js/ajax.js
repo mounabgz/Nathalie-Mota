@@ -42,3 +42,23 @@ document.querySelector('.photo_list-button').addEventListener('click', function(
     })
 });
 (jQuery);
+
+//CODE POUR LES FILTRES/SELECTS
+$(function(){
+    $(".selects_filters-input").select2()
+    jQuery(document).ready(function() {
+        jQuery(".selects_filters-input").change(function(){
+            const filter =jQuery("#filters");
+    
+            jQuery.ajax({
+                url: filter.attr("action"),
+                data :filter.serialize(),
+                type:filter.attr("method"),
+                success: function(data){
+                    jQuery(".photo_list").html(data);
+                }
+            });
+        })
+    })
+})
+

@@ -109,6 +109,7 @@ a, li{
       list-style: none;
       padding: 20px;
       line-height: 150px;
+      z-index: 1;
 
       &-open {
         @include display-flex;
@@ -542,7 +543,22 @@ top: 30%;
 right: 19%;
 }
 
-//LISTE DES PHOTOS 
+/* MEDIA QUERIES POUR LE HERO HEADER */
+@media (max-width:768px){
+  .hero_header img{
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+  }
+  .hero_header-title{
+    font-size: 45px; 
+    white-space: nowrap;
+    @include position-absolute;
+    left: 3.5%
+  }
+}
+
+/* LISTE DES PHOTOS */
 .photo_list {
   @include display-flex;
   flex-wrap: wrap; 
@@ -636,4 +652,99 @@ right: 19%;
   padding: 1%;
   @include cursor-pointer;
   transition: background-color 0.7s;
+}
+
+/* MEDIA QUERIES POUR LA LISTE DES PHOTOS DE LA PAGE D'ACCUEIL */
+@media (max-width: 768px){
+  .photo_list{
+    justify-content: center;
+
+    &-image img {
+      width: 60vh;
+      height: 60vh;
+    }
+  }
+  .photo_list-button{
+    padding: 3%;
+  }
+}
+
+/* SELECTS/FILTRES */
+
+.selects_filters{
+  margin: 6vh;
+
+  &-flex{
+    @include display-flex;
+    justify-content: space-between;
+    margin-left: 10vh;
+    margin-right: 10vh;
+    }
+
+    &-input{
+      width: 15vw;
+    }
+}
+
+/* CLASS CSS PAR DÉFAUT DE LA BIBLIOTHÈQUE SELCT2*/
+.select2-container--default .select2-results__option--selected{
+  background-color: #E00000 !important;
+}
+.select2-container--open .select2-dropdown--below{
+border-bottom-left-radius: 5%;
+border-bottom-right-radius: 5%;
+}
+.select2-search__field {
+  @include display-none;
+}
+
+.select2-selection--single, .select2-selection, .select2-results li{
+  font-family: 'Poppins';
+  font-size: small;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable:hover {
+  color: black;
+  background-color:#FFD6D6 !important;
+}
+.select2-container--default .select2-selection--single{
+  border-radius: 8px !important;
+  border: 1.3px solid #B8BBC2 !important;
+  height: 5vh !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 35px !important;
+}
+.selects_filters-category {
+  @include display-flex;
+  gap: 14vh; /* Ajuste l’espace entre les sélecteurs */
+}
+
+.horizontale-line{
+  width: 100%; 
+  height: 1px; 
+  background-color: black;
+  opacity: 0;
+}
+
+/* MEDIA QUERIES POUR LES FILTRES */
+@media(max-width: 768px){
+  .selects_filters-flex{
+    flex-direction: column;
+    width: 80%;
+    gap: 0.5rem;
+  }
+  .horizontale-line{
+    opacity: 1;
+  }
+  .selects_filters-category{
+    flex-direction: column;
+    gap: 0;
+    gap: 0.5rem;
+  }
+  .selects_filters-input{
+    width: 50vw;
+
+  }
 }

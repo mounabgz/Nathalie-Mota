@@ -2,6 +2,70 @@
 
 <?php get_template_part('template_part/hero-header/hero-header' );?>
 
+<!-- SECTION POUR LES SELECTS-->
+<section class="selects_filters">
+    <form action="<?php echo site_url()?>/wp-admin/admin-ajax.php" method="POST" id="filters">
+    <input type="hidden" name="action" value="myfilter">
+    <div class="selects_filters-flex">
+        <!-- Filtres catégories -->
+        <div class="selects_filters-category">
+        <select name="categorie" class="selects_filters-input">
+        <option value="">CATÉGORIE</option>
+            <?php
+                $categories = get_terms('categorie');
+                if (!is_wp_error($categories)) {
+                    foreach ($categories as $categorie) {
+                        echo '<option class="selects_filters-input" value="' . $categorie->term_id . '">' . $categorie->name . '</option>';
+                    }
+                }
+            ?>
+        </select>
+        <!-- Filtre formats -->
+        <select name="formats" class="selects_filters-input selects_filters-format">
+        <option value="">FORMAT</option>
+            <?php
+                $formats = get_terms('formats');
+                if (!is_wp_error($formats)) {
+                    foreach ($formats as $format) {
+                        echo '<option class="selects_filters-input" value="' . $format->term_id . '">' . $format->name . '</option>';
+                    }
+                }
+            ?>
+        </select>
+        </div>
+        <!-- Filtres par ancienneté -->
+        <div class="selects_filters-date">
+            <select name="date" class="selects_filters-input">
+                <option value="">TRIER PAR</option>
+                <option value="DESC">A partir des plus récentes</option>
+                <option value="ASC">A partir des plus anciennes</option>
+                <?php
+                    // Récupérer les années des publications
+                    $args = array(
+                        'post_type' => 'photo',
+                        'posts_per_page' => -1,
+                    );
+                    $query = new WP_Query($args);
+                    $annees = array();
+
+                    if ($query->have_posts()) {
+                        while ($query->have_posts()) {
+                            $query->the_post();
+                            $annee = get_the_date('Y');
+                            if (!in_array($annee, $annees)) {
+                                $annees[] = $annee;
+                            }
+                        }
+                        wp_reset_postdata();
+                    }
+                ?> 
+            </select>
+        </div>
+
+    </div>
+    </form>
+</section>
+
 <!-- SECTION POUR LA LISTE DES PHOTOS DE LA PAGE D'ACCUEIL-->
 <section>
         <?php
@@ -42,5 +106,7 @@
         <!-- div pour les photos suivantes -->
     </div>
     </section>
+
+    <hr class= "horizontale-line">
 
 <?php get_footer(); ?>
