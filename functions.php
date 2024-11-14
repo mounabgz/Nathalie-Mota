@@ -3,7 +3,8 @@
 function nathalieMota_enqueue_styles() {
     wp_enqueue_style( 'nathalieMota-style', get_template_directory_uri() . '/style.css' ); 
     wp_enqueue_script( 'nathalieMota-scripts', get_template_directory_uri() . '/js/script.js', array(), null, true );
-    wp_enqueue_script( 'nathalieMota-scripts', get_template_directory_uri() . '/js//ajax.js', array(), null, true );
+    wp_enqueue_script( 'nathalieMota-scripts', get_template_directory_uri() . '/js/ajax.js', array(), null, true );
+    wp_enqueue_script( 'nathalieMota-scripts', get_template_directory_uri() . '/js/lightbox.js', array(), null, true );
     wp_enqueue_script('jquery');
     wp_enqueue_script('select2');
 }
@@ -53,13 +54,14 @@ function load_photos() {
             $categorie = strip_tags(get_the_term_list(get_the_ID(), 'categorie')); // Récupérer la catégorie
             $reference = get_field('reference', $post->ID); // Récupère la référence
             $post_url = get_permalink(); // Récupérer le lien du post
+            $thumbnail_url= get_the_post_thumbnail_url();//variable qui recupère l'url de l'image pour ensuite être affiché dans la lightbox
 
             // Construire le HTML pour chaque photo
             $html .= "<div class='photo_list-image'>";
                 $html .= "<a href='" . esc_url($post_url) . "'>";
                     $html .= get_the_post_thumbnail(); // Affiche la vignette
                 $html .= "<div><i class='fa-regular fa-eye'></i>
-                      <i class='fa-solid fa-expand'></i>
+                    <i class='fa-solid fa-expand' data-url='{$thumbnail_url}' data-reference='{$reference}' data-categorie='{$categorie}'></i>
                       <p class='photo_list-text'>". $reference . "</p>
                       <p class='photo_list-categorie'>" . $categorie . "</p>
                       </div>";
@@ -161,3 +163,7 @@ function filter_posts(){
 }     
 add_action('wp_ajax_myfilter', 'filter_posts');
 add_action('wp_ajax_nopriv_myfilter', 'filter_posts');
+
+// LIGHTBOX
+
+

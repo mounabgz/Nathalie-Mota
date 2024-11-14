@@ -80,18 +80,19 @@
                 while ($loop->have_posts()) : $loop->the_post();
                 $categorie=strip_tags(get_the_term_list($post->ID, 'categorie')); // Récupère la catégorie
                 $reference = get_field('reference', $post->ID); // Récupère la référence
+                $thumbnail_url= get_the_post_thumbnail_url();//variable qui recupère l'url de l'image pour ensuite être affiché dans la lightbox
 
                 $post_id = get_permalink(); // Récupère le lien de l'article
                     echo"<div class='photo_list-image'>";
                         echo "<a href='" . esc_url($post_id) . "'>";
                             the_post_thumbnail(); // Affiche les vignettes
-
-                            echo "<div><i class='fa-regular fa-eye'></i>
-                            <i class='fa-solid fa-expand'></i>
-                            <p class='photo_list-text'>". $reference . "</p>
-                            <p class='photo_list-categorie'>" . $categorie . "</p>
-                        </div>";
                     echo "</a>";
+
+                    echo "<div><i class='fa-regular fa-eye'></i>
+                    <i class='fa-solid fa-expand' data-url='{$thumbnail_url}' data-reference='{$reference}' data-categorie='{$categorie}'></i>
+                    <p class='photo_list-text'>". $reference . "</p>
+                    <p class='photo_list-categorie'>" . $categorie . "</p>
+                </div>";
                 echo "</div>";
             endwhile;
             echo "</div>";
