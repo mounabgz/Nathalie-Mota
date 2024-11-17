@@ -11,10 +11,14 @@ e.preventDefault()
     var categorie = $(this).data('categorie');
     var reference = $(this).data('reference');
 
-        // Crée une liste de toutes les images dans la galerie
-        images = $('.fa-expand').map(function() {
-          return $(this).data('url');
-      }).get();
+    // Crée une liste d'objets contenant les URLs et données associées
+    images = $('.fa-expand').map(function() {
+        return {
+            url: $(this).data('url'),
+            categorie: $(this).data('categorie'),
+            reference: $(this).data('reference')
+        };
+    }).get();
   
       // Détermine l'index de l'image actuelle
       currentPhoto = images.indexOf(imageUrl);
@@ -50,11 +54,15 @@ $(document).on('click', '.light_box-close', function() {
 // la navigation au clique vers les photos suivantes 
 $(document).on('click', '.light_box-next', function() {
     currentPhoto = (currentPhoto + 1) % images.length; // Passe à l'image suivante, revient au début si dernière image
-  $('.lightbox-image').attr('src', images[currentPhoto]); // Met à jour l'image dans la lightbox
+    $('.lightbox-image').attr('src', images[currentPhoto].url); // Met à jour l'image dans la lightbox
+    $('.light_box-categorie').text(images[currentPhoto].categorie); // Met à jour la categorie
+    $('.light_box-text').text(images[currentPhoto].reference); // Met à jour la reference
 });
 
 // la navigation au clique vers les photos precedentes
 $(document).on('click', '.light_box-prev', function() {
     currentPhoto = (currentPhoto - 1 + images.length) % images.length; // Passe à l'image précédente, revient à la fin si première image
-  $('.lightbox-image').attr('src', images[currentPhoto]); // Met à jour l'image dans la lightbox
+    $('.lightbox-image').attr('src', images[currentPhoto].url); // Met à jour l'image dans la lightbox
+    $('.light_box-categorie').text(images[currentPhoto].categorie);// Met à jour la categorie
+    $('.light_box-text').text(images[currentPhoto].reference);// Met à jour la reference
 });
