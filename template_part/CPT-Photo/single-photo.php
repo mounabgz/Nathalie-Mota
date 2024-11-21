@@ -74,4 +74,5 @@ $annee= get_the_date('Y');
 endwhile; endif;
 ?>
 
+<hr class= "horizontale-line">
 <?php get_footer();?>
