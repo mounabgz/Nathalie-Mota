@@ -86,9 +86,10 @@
                     echo"<div class='photo_list-image'>";
                         echo "<a href='" . esc_url($post_id) . "'>";
                             the_post_thumbnail(); // Affiche les vignettes
+                            echo "<i class='fa-regular fa-eye'></i>";
                     echo "</a>";
 
-                    echo "<div><i class='fa-regular fa-eye'></i>
+                    echo "<div>
                     <i class='fa-solid fa-expand' data-url='{$thumbnail_url}' data-reference='{$reference}' data-categorie='{$categorie}'></i>
                     <p class='photo_list-text'>". $reference . "</p>
                     <p class='photo_list-categorie'>" . $categorie . "</p>
