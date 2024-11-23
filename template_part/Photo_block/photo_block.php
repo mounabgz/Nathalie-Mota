@@ -36,8 +36,9 @@ $thumbnail_url= get_the_post_thumbnail_url();//variable qui recupère l'url de l
     echo"<div class='photos_apparentes-images'>";
         echo "<a href='" . esc_url($post_id) . "'>";
             the_post_thumbnail('custom-thumbnail');
+            echo "<i class='fa-regular fa-eye'></i>";
             echo "</a>";
-                echo "<div><i class='fa-regular fa-eye'></i>
+                echo "<div>
                 <i class='fa-solid fa-expand' data-url='{$thumbnail_url}' data-reference='{$reference}' data-categorie='{$categorie}'></i>
                     <p class='photos_apparentes-text'>". $reference . "</p>
                     <p class='photos_apparentes-categorie'>" . $categorie . "</p>
